@@ -44,20 +44,43 @@ public class TravelApp {
     
 
     public void bookFlight(int flightNumber, int NoOfPassengers, Scanner sellection){
+        Flight sellectedFlight = null;
 
-        bookedFlights.clear();
+        for(Flight f : flighList){
+            if(f.getFlightNumber() == flightNumber){
+                sellectedFlight = f;
+                break;
+            }
+        }
+
+        if(sellectedFlight == null){
+            System.out.println("Flight not found !");
+        }
+
+        int noOfPassengers = NoOfPassengers;
+        ArrayList<String> passengerNames = new ArrayList<String>();
+        for(int i = 1; i <= noOfPassengers; i++){
+            System.out.print("Enter name of the passenger " + i + " : ");
+            passengerNames.add(sellection.next());
+        }
+
+        sellectedFlight.setNumPassengers(noOfPassengers);
+        sellectedFlight.Passengersname = passengerNames;
+
        
         int confirmationNumber = generateConfirmationNumber();
         
-        f.setConfirmationNumber(confirmationNumber);
+        sellectedFlight.setConfirmationNumber(confirmationNumber);
 
-        bookedFlights.add();
+        bookedFlights.add(sellectedFlight);
+
+        
         System.out.println();
         System.out.println("Congratulation Your ticket is booked ");
         System.out.println();
-        System.out.println("Confrimation Number : " + f.getConfirmationNumber());
+        System.out.println("Confrimation Number : " + sellectedFlight.getConfirmationNumber());
         System.out.println();
-        System.out.println(bookedFlights.getFirst());
+        System.out.println(bookedFlights.toString());
     }
 
     private int generateConfirmationNumber(){

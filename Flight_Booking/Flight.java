@@ -8,7 +8,7 @@ public class Flight {
     private String origin;
     private String destination;
     private String date;
-    int numPassengers;
+    private int numPassengers;
     ArrayList<String> Passengersname = new ArrayList<String>();
     private int confirmationNumber;
 
@@ -78,17 +78,17 @@ public class Flight {
         this.confirmationNumber = confirmationNumber;
     }
 
-    public void setPassengerNames(Scanner sc){
-        int NoOfPassengers = getNumPassengers();
+    // public void setPassengerNames(Scanner sc){
+    //     int NoOfPassengers = getNumPassengers();
 
-        Passengersname.clear();
+    //     Passengersname.clear();
         
-        for(int i = 1; i <= NoOfPassengers; i++){
-            System.out.print("Enter name of the passenger " + i + " : ");
-            String name = sc.next();
-            Passengersname.add(name);
-        }
-    }
+    //     for(int i = 1; i <= NoOfPassengers; i++){
+    //         System.out.print("Enter name of the passenger " + i + " : ");
+    //         String name = sc.next();
+    //         Passengersname.add(name);
+    //     }
+    // }
 
     public ArrayList<String> getPassengerNames(){
         return Passengersname;
@@ -119,7 +119,7 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight Number :" + getFlightNumber() +  ",\nOrigin :" + getOrigin() + ",\nDestination :" + getDestination() + ",\nDate :" + getDate() + "\nPrice :" + getPrice() + "\nName of the passengers"  + displayPassengerNames();
+        return "Flight Number :" + getFlightNumber() +  ",\nOrigin :" + getOrigin() + ",\nDestination :" + getDestination() + ",\nDate :" + getDate() + "\nPrice :" + (getPrice()*getNumPassengers()) + "\nName of the passengers : \n"  + displayPassengerNames();
     }
 
     

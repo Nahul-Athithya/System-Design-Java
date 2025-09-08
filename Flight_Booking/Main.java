@@ -34,7 +34,7 @@ public class Main{
                     System.out.println("No of Passengers");
                     f.setNumPassengers(sellection.nextInt());
 
-                    travelApp.availableFlights(flight);
+                    travelApp.availableFlights(f);
 
                     break;
                 case 2:
