@@ -1,6 +1,4 @@
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Flight {
     private int flightNumber;
@@ -9,7 +7,6 @@ public class Flight {
     private String destination;
     private String date;
     private int numPassengers;
-    ArrayList<String> Passengersname = new ArrayList<String>();
     private int confirmationNumber;
 
     public Flight(){}
@@ -62,44 +59,12 @@ public class Flight {
     public void setNumPassengers(int numPassengers) {
         this.numPassengers = numPassengers;
     }
-    // public String getPassengerName() {
-    //     return passengerName;
-    // }
-    // public void setPassengerName(String passengerName) {
-    //     this.passengerName = passengerName;
-    // }
 
-    public int getConfirmationNumber() {
-        return confirmationNumber;
-    }
+    
 
     
     public void setConfirmationNumber(int confirmationNumber) {
         this.confirmationNumber = confirmationNumber;
-    }
-
-    // public void setPassengerNames(Scanner sc){
-    //     int NoOfPassengers = getNumPassengers();
-
-    //     Passengersname.clear();
-        
-    //     for(int i = 1; i <= NoOfPassengers; i++){
-    //         System.out.print("Enter name of the passenger " + i + " : ");
-    //         String name = sc.next();
-    //         Passengersname.add(name);
-    //     }
-    // }
-
-    public ArrayList<String> getPassengerNames(){
-        return Passengersname;
-    }
-
-    public String displayPassengerNames(){
-        StringBuilder sb = new StringBuilder();
-        for(String name : getPassengerNames()){
-            sb.append(name).append("\n");
-        }
-        return sb.toString();
     }
 
     public String displayAvailableFlightDetails(){
@@ -109,7 +74,6 @@ public class Flight {
         .append("From : ").append(getOrigin()).append("\n")
         .append("To : ").append(getDestination()).append("\n")
         .append("Date : ").append(getDate()).append("\n")
-        .append("For ").append(getNumPassengers()).append(" Passengers\n")
         .append("Price : ").append(getPrice()).append("\n");
 
         return sb.toString();
@@ -119,7 +83,7 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight Number :" + getFlightNumber() +  ",\nOrigin :" + getOrigin() + ",\nDestination :" + getDestination() + ",\nDate :" + getDate() + "\nPrice :" + (getPrice()*getNumPassengers()) + "\nName of the passengers : \n"  + displayPassengerNames();
+        return displayAvailableFlightDetails();
     }
 
     

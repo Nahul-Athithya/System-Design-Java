@@ -4,8 +4,7 @@ import java.util.Scanner;
 public class Main{
     public static void main(String[] args) {
         Scanner sellection = new Scanner(System.in);
-        TravelApp travelApp = new TravelApp();
-        Flight flight = new Flight();
+        BookingSystem system = new BookingSystem();
         int choice;
         boolean run = true;
 
@@ -18,26 +17,25 @@ public class Main{
             System.out.println("Enter the choice :");
             choice = sellection.nextInt();
             switch (choice) {
-                case 1:
+                case 1 -> {
                     Flight f = new Flight();
-                    //System.out.println("1.) Search for available Flights....");
-                    
+
                     System.out.println("From :");
-                    f.setOrigin(sellection.next());
+                    String From = sellection.next();
                     
                     System.out.println("To :");
-                    f.setDestination(sellection.next());
+                    String To = sellection.next();
 
                     System.out.println("Date (dd/mm/yyyy):");
-                    f.setDate(sellection.next());
+                    String Date = sellection.next();
 
                     System.out.println("No of Passengers");
-                    f.setNumPassengers(sellection.nextInt());
+                    int num = sellection.nextInt();
 
-                    travelApp.availableFlights(f);
-
-                    break;
-                case 2:
+                    system.availableFlights(From, To, Date);
+                    
+                }
+                case 2 -> {
                     System.out.print("Fligth Number : ");
                     int flightNumber = sellection.nextInt();
 
@@ -45,14 +43,13 @@ public class Main{
                     
                     int NoOfPassengers = sellection.nextInt();
 
-                    travelApp.bookFlight(flightNumber, NoOfPassengers, sellection);
-                    break;
-                case 3:
+                    system.bookFlight(flightNumber, NoOfPassengers, sellection);
+                }
+                case 3 -> {
                     System.out.println();
                     run = false;
-                    break;
-                default:
-                    System.out.println("Not in the list");
+                }
+                default -> System.out.println("Not in the list");
             }
         }
 
